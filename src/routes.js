@@ -1,5 +1,8 @@
+import { flatMap } from "lodash";
+
 const routes = [{
   order: 0,
+  tabId: 0,
   label: 'Home',
   path: "/",
   exact: true,
@@ -7,13 +10,39 @@ const routes = [{
 },
 {
   order: 1,
+  tabId: 1,
   label: 'Services',
   path: "/services",
   exact: true,
   component: () => <div>Services</div>,
+  menuId: 'services-menu',
+  subRoutes: [{
+    order: 5,
+    tabId: 1,
+    label: 'Custom Software',
+    path: "/custom-software",
+    exact: true,
+    component: () => <div>Custom Software</div>,
+  }, {
+    order: 6,
+    tabId: 1,
+    label: 'Web apps',
+    path: "/web-apps",
+    exact: true,
+    component: () => <div>Web apps</div>,
+  },
+  {
+    order: 7,
+    tabId: 1,
+    label: 'Mobile apps',
+    path: "/mobile-apps",
+    exact: true,
+    component: () => <div>Mobile apps</div>,
+  }],
 },
 {
   order: 2,
+  tabId: 2,
   label: 'Revolution',
   path: "/revolution",
   exact: true,
@@ -21,6 +50,7 @@ const routes = [{
 },
 {
   order: 3,
+  tabId: 3,
   label: 'About',
   path: "/about",
   exact: true,
@@ -28,15 +58,13 @@ const routes = [{
 },
 {
   order: 4,
+  tabId: 4,
   label: 'Contact Us',
   path: "/contact",
   exact: true,
   component: () => <div>Contact Us</div>,
 }];
 
-export default routes.sort((a,b) => a.order - b.order);
+export const flatRoutes = flatMap(routes, r => [r, ...(r.subRoutes || [])]);
 
-
-/* <Route exact path="/custom-software" component={() => <div>Custom software</div> } />
-<Route exact path="/web-apps" component={() => <div>Web apps</div> } />
-<Route exact path="/mobile-apps" component={() => <div>Mobile apps</div> } /> */
+export default routes.sort((a, b) => a.order - b.order);

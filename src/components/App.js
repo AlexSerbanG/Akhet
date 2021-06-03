@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import { Header } from '../components/ui/Header';
 import { theme } from './ui/theme';
-import routes from '../routes';
+import { flatRoutes } from '../routes';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <div className="App">
           <Header />
           <Switch>
-            {routes.map((route) => <Route {...route} />)}
+            {flatRoutes.map((route) => <Route {...route} key={route.label} />)}
           </Switch>
         </div>
       </BrowserRouter>

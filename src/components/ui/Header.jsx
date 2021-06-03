@@ -1,63 +1,44 @@
 import * as React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import { Button, makeStyles, Tab, Tabs } from '@material-ui/core';
+import { Button, makeStyles, useMediaQuery, useTheme } from '@material-ui/core';
 import logo from '../../assets/logo.svg';
 import { Link } from 'react-router-dom';
-import routes from '../../routes';
+import { ElevationScroll } from './ElevationScroll';
+import { WebTabs } from './WebTabs';
 
 const useStyles = makeStyles(theme => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
     marginBottom: '3em',
+    [theme.breakpoints.down('md')]: {
+      marginBottom: '2em',
+    },
+    [theme.breakpoints.down('xs')]: {
+      marginBottom: '1.25em',
+    }
   },
   logo: {
     height: '8em',
-  },
-  tabContainer: {
-    marginLeft: 'auto',
-  },
-  tab: {
-    ...theme.typography.tab,
-    minWidth: 10,
-    marginLeft: 25,
-    textTransform: 'none',
-  },
-  button: {
-    borderRadius: '50px',
-    marginLeft: 50,
-    marginRight: 25,
-    fontSize: '1rem',
-    textTransform: 'none',
-    height: 45,
-    color: 'white',
+    [theme.breakpoints.down('md')]: {
+      height: '7em',
+    },
+    [theme.breakpoints.down('xs')]: {
+      height: '5.5em',
+    }
   },
   logoContainer: {
     padding: 0,
     "&:hover": {
       background: 'transparent',
     },
-  }
+  },
 }));
 
-const ElevationScroll = (props) => {
-  const { children } = props;
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 0,
-  });
-
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-  });
-}
-
 export const Header = () => {
-  const initialRoute = routes.find(({ path }) => window.location.pathname === path);
-  const [activeTab, setActiveTab] = React.useState(initialRoute?.order);
   const classes = useStyles();
-
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <>
       <ElevationScroll>
@@ -66,12 +47,7 @@ export const Header = () => {
             <Button component={Link} to="/" className={classes.logoContainer} disableRipple>
               <img src={logo} alt="company logo" className={classes.logo} />
             </Button>
-            <Tabs className={classes.tabContainer} value={activeTab} onChange={(_, val) => setActiveTab(val)}>
-              {routes.map(({ path, label }) => <Tab className={classes.tab} component={Link} to={path} label={label} />)}
-            </Tabs>
-            <Button variant="contained" color="secondary" className={classes.button}>
-              Free estimate
-            </Button>
+            {matches ? null : <WebTabs />}
           </Toolbar>
         </AppBar>
       </ElevationScroll>
