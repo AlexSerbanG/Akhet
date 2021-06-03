@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const WebTabs = () => {
+export const WebNav = () => {
   const routesByPath = React.useMemo(
     () => keyBy(flatRoutes, 'path'),
     []);

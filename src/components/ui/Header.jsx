@@ -5,7 +5,8 @@ import { Button, makeStyles, useMediaQuery, useTheme } from '@material-ui/core';
 import logo from '../../assets/logo.svg';
 import { Link } from 'react-router-dom';
 import { ElevationScroll } from './ElevationScroll';
-import { WebTabs } from './WebTabs';
+import { WebNav } from './WebNav';
+import { MobileNav } from './MobileNav';
 
 const useStyles = makeStyles(theme => ({
   toolbarMargin: {
@@ -47,7 +48,7 @@ export const Header = () => {
             <Button component={Link} to="/" className={classes.logoContainer} disableRipple>
               <img src={logo} alt="company logo" className={classes.logo} />
             </Button>
-            {matches ? null : <WebTabs />}
+            {matches ? <MobileNav /> : <WebNav />}
           </Toolbar>
         </AppBar>
       </ElevationScroll>
