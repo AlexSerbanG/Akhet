@@ -17,8 +17,9 @@ export const theme = createMuiTheme({
     },
   },
   typography: {
-    h3: {
-      fontWeight: 300
+    tab: {
+      fontWeight: 700,
+      fontSize: '1rem',
     }
   },
 });
