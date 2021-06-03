@@ -34,6 +34,9 @@ const useStyles = makeStyles(theme => ({
       background: 'transparent',
     },
   },
+  appBar: {
+    zIndex: theme.zIndex.modal+1,
+  },
 }));
 
 export const Header = () => {
@@ -43,7 +46,7 @@ export const Header = () => {
   return (
     <>
       <ElevationScroll>
-        <AppBar position="fixed">
+        <AppBar position="fixed" className={classes.appBar}>
           <Toolbar disableGutters>
             <Button component={Link} to="/" className={classes.logoContainer} disableRipple>
               <img src={logo} alt="company logo" className={classes.logo} />

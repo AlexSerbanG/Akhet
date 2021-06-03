@@ -82,7 +82,7 @@ export const WebNav = () => {
     </Tabs>
       <Button variant="contained" color="secondary" className={classes.button}>
         Free estimate
-    </Button>
+      </Button>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -92,6 +92,9 @@ export const WebNav = () => {
           onMouseLeave: handleCloseMenu,
         }}
         classes={{ paper: classes.menu }}
+        keepMounted
+        elevation={0}
+        style={{ zIndex: 1302 }}
       >
         {routesByPath[hoveredPath]?.subRoutes?.map(({ label, path }) => (
           <MenuItem
