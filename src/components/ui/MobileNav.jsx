@@ -2,8 +2,8 @@ import { IconButton, makeStyles, SwipeableDrawer, List, ListItem, ListItemText }
 import * as React from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
-import routes, { flatRoutes } from '../../routes';
-import { keyBy } from 'lodash';
+import routes from '../../routes';
+import { useActivePathContext } from '../_context/activePath';
 
 const useStyles = makeStyles(theme => ({
   toolbarMargin: {
@@ -43,11 +43,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 export const MobileNav = () => {
-  const routesByPath = React.useMemo(
-    () => keyBy(flatRoutes, 'path'),
-    []);
-  const initialRoute = routesByPath[window.location.pathname];
-  const [activeTab, setActiveTab] = React.useState(initialRoute?.tabId);
+  const { activeTab, setActiveTab } = useActivePathContext();
   const classes = useStyles();
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);

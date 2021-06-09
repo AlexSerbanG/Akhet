@@ -5,17 +5,20 @@ import { Header } from '../components/ui/Header';
 import { theme } from './ui/theme';
 import { flatRoutes } from '../routes';
 import { Footer } from './ui/Footer';
+import { ActivePathContextProvider } from './_context/activePath';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <div className="App">
-          <Header />
-          <Switch>
-            {flatRoutes.map((route) => <Route {...route} key={route.label} />)}
-          </Switch>
-          <Footer />
+          <ActivePathContextProvider>
+            <Header />
+            <Switch>
+              {flatRoutes.map((route) => <Route {...route} key={route.label} />)}
+            </Switch>
+            <Footer />
+          </ActivePathContextProvider>
         </div>
       </BrowserRouter>
     </ThemeProvider>

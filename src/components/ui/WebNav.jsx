@@ -1,8 +1,8 @@
 import { Button, makeStyles, Menu, MenuItem, Tab, Tabs } from '@material-ui/core';
-import { keyBy } from 'lodash';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import routes, { flatRoutes } from '../../routes';
+import routes from '../../routes';
+import { useActivePathContext } from '../_context/activePath';
 
 const useStyles = makeStyles(theme => ({
   tabContainer: {
@@ -39,11 +39,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const WebNav = () => {
-  const routesByPath = React.useMemo(
-    () => keyBy(flatRoutes, 'path'),
-    []);
-  const initialRoute = routesByPath[window.location.pathname];
-  const [activeTab, setActiveTab] = React.useState(initialRoute?.tabId);
+  const { routesByPath, activeTab, setActiveTab } = useActivePathContext();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const [hoveredPath, setHoveredPath] = React.useState(null);
