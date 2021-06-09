@@ -4,6 +4,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { Header } from '../components/ui/Header';
 import { theme } from './ui/theme';
 import { flatRoutes } from '../routes';
+import { Footer } from './ui/Footer';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Switch>
             {flatRoutes.map((route) => <Route {...route} key={route.label} />)}
           </Switch>
+          <Footer />
         </div>
       </BrowserRouter>
     </ThemeProvider>
