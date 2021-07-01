@@ -34,7 +34,6 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       opacity: 1,
     }
-
   }
 }));
 
