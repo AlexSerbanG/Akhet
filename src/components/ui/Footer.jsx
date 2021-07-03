@@ -85,7 +85,7 @@ export const Footer = () => {
                 Web development
               </Grid>
               <Grid item component={Link} to="/mobile-apps" className={classes.link} onClick={() => setActiveTab(routesByPath['/mobile-apps']?.tabId)}>
-                Mobile app development
+                iOS/Android app development
             </Grid>
             </Grid>
           </Grid>
