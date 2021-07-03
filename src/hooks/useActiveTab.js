@@ -8,9 +8,15 @@ export const useActiveTab = () => {
     []);
   const initialRoute = routesByPath[window.location.pathname];
   const [activeTab, setActiveTab] = React.useState(initialRoute?.tabId);
+  const setActiveTabByRoute = React.useCallback(
+    (route) => {
+      setActiveTab(routesByPath[route]?.tabId || false);
+    },
+    [setActiveTab, routesByPath]);
   return {
     routesByPath,
     activeTab,
     setActiveTab,
+    setActiveTabByRoute,
   }
 };

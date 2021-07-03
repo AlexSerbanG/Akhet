@@ -15,6 +15,8 @@ import webAppsIcon from '../../assets/websiteIcon.svg';
 import revolutionBackground from '../../assets/repeatingBackground.svg';
 import infoBackground from '../../assets/infoBackground.svg';
 import { CallToAction } from './CallToAction';
+import { Link } from 'react-router-dom';
+import { useActivePathContext } from '../_context/activePath';
 
 const useStyles = makeStyles((theme) => ({
   animationContainer: {
@@ -142,6 +144,7 @@ export const LandingPage = () => {
 
 const HeroBlock = () => {
   const classes = useStyles();
+  const { setActiveTabByRoute } = useActivePathContext();
   return (
     <Grid container direction="row" justify="center" alignItems="center">
       <Grid sm item className={classes.heroTextContainer}>
@@ -151,10 +154,26 @@ const HeroBlock = () => {
       </Grid>
       <Grid container justify="center" className={classes.btnContainer}>
         <Grid item>
-          <Button variant="contained" className={classes.estimateButton}>Free estimate</Button>
+          <Button
+            component={Link}
+            to="/estimate"
+            onClick={() => setActiveTabByRoute('/estimate')}
+            variant="contained"
+            className={classes.estimateButton}
+          >
+            Free estimate
+          </Button>
         </Grid>
         <Grid item>
-          <Button variant="outlined" className={classes.learnMoreButton}>Learn more</Button>
+          <Button
+            component={Link}
+            to="/revolution"
+            onClick={() => setActiveTabByRoute('/revolution')}
+            variant="outlined"
+            className={classes.learnMoreButton}
+          >
+            Learn more
+          </Button>
         </Grid>
       </Grid>
       <Grid sm item className={classes.animationContainer}>
@@ -173,6 +192,7 @@ const ServicesBlock = () => {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSm = useMediaQuery(theme.breakpoints.down('sm'));
+  const { setActiveTabByRoute } = useActivePathContext();
   return (
     <Grid
       container
@@ -184,6 +204,9 @@ const ServicesBlock = () => {
         <Typography variant="subtitle1" className={classes.subtitle}>Save Energy. Save Time. Save Money.</Typography>
         <Typography variant="subtitle1">Complete digital solutions, from investigation to celebration</Typography>
         <Button
+          component={Link}
+          to="/custom-software"
+          onClick={() => setActiveTabByRoute('/custom-software')}
           variant="outlined"
           className={classes.learnMoreButton}
           style={{ marginBottom: matchesSm ? '2em' : 0 }}
@@ -202,6 +225,7 @@ const MobileDevBlock = () => {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSm = useMediaQuery(theme.breakpoints.down('sm'));
+  const { setActiveTabByRoute } = useActivePathContext();
   return (
     <Grid
       container
@@ -213,6 +237,9 @@ const MobileDevBlock = () => {
         <Typography variant="subtitle1" className={classes.subtitle}>Extend Functionality. Extend Acces. Increase Engagement</Typography>
         <Typography variant="subtitle1">Increase your web experience or create a standalone app{matchesSm ? null : <br />} with either mobile platform</Typography>
         <Button
+          component={Link}
+          to="/mobile-apps"
+          onClick={() => setActiveTabByRoute('/mobile-apps')}
           variant="outlined"
           className={classes.learnMoreButton}
           style={{ marginBottom: matchesSm ? '2em' : 0 }}
@@ -231,6 +258,7 @@ const WebDevBlock = () => {
   const classes = useStyles();
   const theme = useTheme();
   const matchesSm = useMediaQuery(theme.breakpoints.down('sm'));
+  const { setActiveTabByRoute } = useActivePathContext();
   return (
     <Grid
       container
@@ -242,6 +270,9 @@ const WebDevBlock = () => {
         <Typography variant="subtitle1" className={classes.subtitle}>Reach more. Discover more. Sell more. </Typography>
         <Typography variant="subtitle1">Optimized for Search Engines, built for speed.</Typography>
         <Button
+          component={Link}
+          to="/web-apps"
+          onClick={() => setActiveTabByRoute('/web-apps')}
           variant="outlined"
           className={classes.learnMoreButton}
           style={{ marginBottom: matchesSm ? '2em' : 0 }}
@@ -258,6 +289,7 @@ const WebDevBlock = () => {
 
 const RevolutionBlock = () => {
   const classes = useStyles();
+  const { setActiveTabByRoute } = useActivePathContext();
   return (
     <Grid container alignItems="center" justify="center" style={{ height: '100em', marginTop: '10em' }}>
       <Card className={classes.revolutionCard}>
@@ -272,7 +304,15 @@ const RevolutionBlock = () => {
               <Typography variant="subtitle1" gutterBottom>
                 Visionary insights coupled with cutting-edge technology is a recipe for revolution.
               </Typography>
-              <Button variant="outlined" className={classes.learnMoreButton}>Learn more</Button>
+              <Button
+                component={Link}
+                to="/revolution"
+                onClick={() => setActiveTabByRoute('/revolution')}
+                variant="outlined"
+                className={classes.learnMoreButton}
+              >
+                Learn more
+              </Button>
             </Grid>
           </Grid>
         </CardContent>
@@ -287,17 +327,17 @@ const InformationBlock = () => {
   const theme = useTheme();
   const matchesSm = useMediaQuery(theme.breakpoints.down('sm'));
   const matchesXs = useMediaQuery(theme.breakpoints.down('xs'));
+  const { setActiveTabByRoute } = useActivePathContext();
   return (
-    <Grid container alignItems="center" style={{ height: '80rem' }}>
+    <Grid container alignItems="center" style={{ height: '80rem' }} className={classes.infoBackground}>
       <Grid
         item
         container
-        style={{ position: 'absolute', textAlign: matchesXs ? 'center' : 'inherit' }}
+        style={{ textAlign: matchesXs ? 'center' : 'inherit' }}
         direction={matchesXs ? 'column' : 'row'}
-        spacing={matchesXs ? 10 : 0}
       >
         <Grid item sm style={{ marginLeft: matchesXs ? 0 : matchesSm ? '2em' : '5em' }}>
-          <Grid container direction="column">
+          <Grid container direction="column" style={{ marginBottom: matchesXs ? '10em' : 0 }}>
             <Grid item >
               <Typography variant="h2" style={{ color: 'white' }}>
                 About us
@@ -307,6 +347,9 @@ const InformationBlock = () => {
               </Typography>
               <Grid item>
                 <Button
+                  component={Link}
+                  to="/about"
+                  onClick={() => setActiveTabByRoute('/about')}
                   variant="outlined"
                   className={classes.learnMoreButton}
                   style={{ color: 'white', borderColor: 'white' }}
@@ -328,6 +371,9 @@ const InformationBlock = () => {
               </Typography>
               <Grid item>
                 <Button
+                  component={Link}
+                  to="/contact"
+                  onClick={() => setActiveTabByRoute('/contact')}
                   variant="outlined"
                   className={classes.learnMoreButton}
                   style={{ color: 'white', borderColor: 'white' }}
@@ -339,7 +385,6 @@ const InformationBlock = () => {
           </Grid>
         </Grid >
       </Grid>
-      <div className={classes.infoBackground}></div>
     </Grid>
   )
 }

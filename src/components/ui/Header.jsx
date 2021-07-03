@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
 export const Header = () => {
   const classes = useStyles();
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('md'));
+  const matchesMd = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <>
       <ElevationScroll>
@@ -51,7 +51,7 @@ export const Header = () => {
             <Button component={Link} to="/" className={classes.logoContainer} disableRipple>
               <img src={logo} alt="company logo" className={classes.logo} />
             </Button>
-            {matches ? <MobileNav /> : <WebNav />}
+            {matchesMd ? <MobileNav /> : <WebNav />}
           </Toolbar>
         </AppBar>
       </ElevationScroll>

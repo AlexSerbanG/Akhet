@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const WebNav = () => {
-  const { routesByPath, activeTab, setActiveTab } = useActivePathContext();
+  const { routesByPath, activeTab, setActiveTab, setActiveTabByRoute } = useActivePathContext();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const [hoveredPath, setHoveredPath] = React.useState(null);
@@ -60,22 +60,30 @@ export const WebNav = () => {
     []);
 
   return (
-    <><Tabs className={classes.tabContainer} value={activeTab} onChange={(_, val) => setActiveTab(val)}>
-      {routes.map(({ path, label, menuId }) =>
-        <Tab
-          className={classes.tab}
-          component={Link}
-          to={path}
-          key={label}
-          label={label}
-          {...(menuId && {
-            'aria-owns': anchorEl ? menuId : undefined,
-            'aria-haspopup': anchorEl ? true : undefined,
-            onMouseOver: (e) => handleOpenMenu({ e, path }),
-          })}
-        />)}
-    </Tabs>
-      <Button variant="contained" color="secondary" className={classes.button}>
+    <>
+      <Tabs className={classes.tabContainer} value={activeTab} onChange={(_, val) => setActiveTab(val)}>
+        {routes.map(({ path, label, menuId }) =>
+          <Tab
+            className={classes.tab}
+            component={Link}
+            to={path}
+            key={label}
+            label={label}
+            {...(menuId && {
+              'aria-owns': anchorEl ? menuId : undefined,
+              'aria-haspopup': anchorEl ? true : undefined,
+              onMouseOver: (e) => handleOpenMenu({ e, path }),
+            })}
+          />)}
+      </Tabs>
+      <Button
+        component={Link}
+        to="/estimate"
+        onClick={() => setActiveTabByRoute('/estimate')}
+        variant="contained"
+        color="secondary"
+        className={classes.button}
+      >
         Free estimate
       </Button>
       <Menu
@@ -96,7 +104,7 @@ export const WebNav = () => {
             key={label}
             onClick={() => {
               handleCloseMenu();
-              setActiveTab(routesByPath[path]?.tabId);
+              setActiveTabByRoute(path);
             }}
             component={Link}
             to={path}
