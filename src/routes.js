@@ -1,5 +1,6 @@
 import { flatMap } from "lodash";
 import { LandingPage } from "./components/ui/LandingPage";
+import { Services } from "./components/ui/Services";
 
 const routes = [{
   order: 0,
@@ -15,7 +16,7 @@ const routes = [{
   label: 'Services',
   path: "/services",
   exact: true,
-  component: () => <div>Services</div>,
+  component: Services,
   menuId: 'services-menu',
   subRoutes: [{
     order: 5,

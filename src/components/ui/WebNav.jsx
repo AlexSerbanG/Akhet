@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
     minWidth: 10,
     marginLeft: 25,
     textTransform: 'none',
+    '&:hover': {
+      opacity: 1,
+    }
   },
   button: {
     borderRadius: '50px',
