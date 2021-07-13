@@ -1,4 +1,5 @@
 import { flatMap } from "lodash";
+import { CustomSoftware } from "./components/ui/CustomSoftware";
 import { LandingPage } from "./components/ui/LandingPage";
 import { Services } from "./components/ui/Services";
 
@@ -24,7 +25,7 @@ const routes = [{
     label: 'Custom Software',
     path: "/custom-software",
     exact: true,
-    component: () => <div>Custom Software</div>,
+    component: CustomSoftware,
   }, {
     order: 6,
     tabId: 1,

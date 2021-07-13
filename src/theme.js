@@ -52,6 +52,11 @@ export const theme = createMuiTheme({
       color: 'white',
       fontSize: '1.25rem',
       fontWeight: 300,
-    }
+    },
+    body1: {
+      fontSize: '1.25rem',
+      color: arcGrey,
+      fontWeight: 300,
+    },
   },
 });
