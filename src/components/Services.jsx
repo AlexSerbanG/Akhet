@@ -6,10 +6,10 @@ import Button from '@material-ui/core/Button';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useTheme from '@material-ui/core/styles/useTheme';
 import { makeStyles } from '@material-ui/core/styles';
-import customSoftwareIcon from '../../assets/Custom Software Icon.svg';
-import mobileAppsIcon from '../../assets/mobileIcon.svg';
-import webAppsIcon from '../../assets/websiteIcon.svg';
-import { useActivePathContext } from '../_context/activePath';
+import customSoftwareIcon from '../assets/Custom Software Icon.svg';
+import mobileAppsIcon from '../assets/mobileIcon.svg';
+import webAppsIcon from '../assets/websiteIcon.svg';
+import { useActivePathContext } from './_context/activePath';
 
 const useStyles = makeStyles((theme) => ({
   subtitle: {

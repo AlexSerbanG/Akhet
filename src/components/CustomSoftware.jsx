@@ -8,10 +8,10 @@ import IconButton from '@material-ui/core/IconButton';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import { useActiveTab } from '../../hooks/useActiveTab';
-import lightbulb from '../../assets/bulb.svg';
-import cash from '../../assets/cash.svg';
-import stopwatch from '../../assets/stopwatch.svg';
+import lightbulb from '../assets/bulb.svg';
+import cash from '../assets/cash.svg';
+import stopwatch from '../assets/stopwatch.svg';
+import { useActivePathContext } from './_context/activePath';
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -30,7 +30,7 @@ export const CustomSoftware = () => {
   const theme = useTheme();
   const matchesMd = useMediaQuery(theme.breakpoints.down('md'));
   const matchesSm = useMediaQuery(theme.breakpoints.down('sm'));
-  const { setActiveTabByRoute } = useActiveTab();
+  const { setActiveTabByRoute } = useActivePathContext();
 
   return (
     <Grid container direction="column" className={classes.mainContainer}>

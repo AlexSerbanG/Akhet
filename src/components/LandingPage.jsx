@@ -9,14 +9,14 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useTheme from '@material-ui/core/styles/useTheme';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import customSoftwareIcon from '../../assets/Custom Software Icon.svg';
-import mobileAppsIcon from '../../assets/mobileIcon.svg';
-import webAppsIcon from '../../assets/websiteIcon.svg';
-import revolutionBackground from '../../assets/repeatingBackground.svg';
-import infoBackground from '../../assets/infoBackground.svg';
-import { CallToAction } from './CallToAction';
+import customSoftwareIcon from '../assets/Custom Software Icon.svg';
+import mobileAppsIcon from '../assets/mobileIcon.svg';
+import webAppsIcon from '../assets/websiteIcon.svg';
+import revolutionBackground from '../assets/repeatingBackground.svg';
+import infoBackground from '../assets/infoBackground.svg';
+import { CallToAction } from './ui/CallToAction';
 import { Link } from 'react-router-dom';
-import { useActivePathContext } from '../_context/activePath';
+import { useActivePathContext } from './_context/activePath';
 
 const useStyles = makeStyles((theme) => ({
   animationContainer: {

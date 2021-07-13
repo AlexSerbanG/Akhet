@@ -1,7 +1,7 @@
 import { flatMap } from "lodash";
-import { CustomSoftware } from "./components/ui/CustomSoftware";
-import { LandingPage } from "./components/ui/LandingPage";
-import { Services } from "./components/ui/Services";
+import { CustomSoftware } from "./components/CustomSoftware";
+import { LandingPage } from "./components/LandingPage";
+import { Services } from "./components/Services";
 
 const routes = [{
   order: 0,
