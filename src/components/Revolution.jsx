@@ -1,14 +1,9 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import { useActivePathContext } from './_context/activePath';
+import { makeStyles } from '@material-ui/core/styles';
+// import useMediaQuery from '@material-ui/core/useMediaQuery';
+// import { useActivePathContext } from './_context/activePath';
 import vision from '../assets/vision.svg';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,10 +16,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Revolution = () => {
-  const { setActiveTabByRoute } = useActivePathContext();
+  // const { setActiveTabByRoute } = useActivePathContext();
   const classes = useStyles();
-  const theme = useTheme();
-  const matchesMd = useMediaQuery(theme.breakpoints.down('md'));
+  // const theme = useTheme();
+  // const matchesMd = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Grid container direction="column">
