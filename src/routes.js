@@ -1,7 +1,10 @@
 import { flatMap } from "lodash";
 import { CustomSoftware } from "./components/CustomSoftware";
 import { LandingPage } from "./components/LandingPage";
+import { MobileApps } from "./components/MobileApps";
+import { Revolution } from "./components/Revolution";
 import { Services } from "./components/Services";
+import { WebApps } from "./components/WebApps";
 
 const routes = [{
   order: 0,
@@ -32,7 +35,7 @@ const routes = [{
     label: 'Web apps',
     path: "/web-apps",
     exact: true,
-    component: () => <div>Web apps</div>,
+    component: WebApps,
   },
   {
     order: 7,
@@ -40,7 +43,7 @@ const routes = [{
     label: 'Mobile apps',
     path: "/mobile-apps",
     exact: true,
-    component: () => <div>Mobile apps</div>,
+    component: MobileApps,
   }],
 },
 {
@@ -49,7 +52,7 @@ const routes = [{
   label: 'Revolution',
   path: "/revolution",
   exact: true,
-  component: () => <div>Revolution</div>,
+  component: Revolution,
 },
 {
   order: 3,
