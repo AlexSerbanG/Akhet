@@ -1,4 +1,5 @@
 import { flatMap } from "lodash";
+import { Contact } from "./components/Contact";
 import { CustomSoftware } from "./components/CustomSoftware";
 import { LandingPage } from "./components/LandingPage";
 import { MobileApps } from "./components/MobileApps";
@@ -68,7 +69,7 @@ const routes = [{
   label: 'Contact Us',
   path: "/contact",
   exact: true,
-  component: () => <div>Contact Us</div>,
+  component: Contact,
 }];
 
 export const flatRoutes = flatMap(routes, r => [r, ...(r.subRoutes || [])]);
